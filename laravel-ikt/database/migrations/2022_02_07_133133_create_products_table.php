@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->double('amount');
             $table->string('unit');
+            $table->foreignId('categoryId');
         });
     }
 
