@@ -13,7 +13,7 @@ class Cart extends Model
         return $this->belongsTo(User::class, 'userId');
     }
 
-    public function cartProductConnection(){
-        return $this->hasMany(CartProductConnection::class, 'cartId');
+    public function products(){
+        return $this->belongsToMany(Product::class, 'cart_product_connections', 'cartId', 'productId');
     }
 }
