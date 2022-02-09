@@ -12,6 +12,6 @@ class Product extends Model
     }
 
     public function cart_product_connection() {
-        return $this->HasMany(CartProductConnection::class, 'productId');
+        return $this->hasMany(CartProductConnection::class, 'productId');
     }
 }
