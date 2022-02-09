@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {   
     protected $table = "carts";
+    
     public function user(){
-        return
+        return $this->belongsTo(User::class, 'userId');
     }
 }
