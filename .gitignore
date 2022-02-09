@@ -22,3 +22,5 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 laravel-ikt/vendor/
+/.idea
+/laravel-ikt/.notifier
