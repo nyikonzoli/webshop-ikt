@@ -16,42 +16,51 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert(
             [
+                'id' => 1,
                 'name' => 'Insutrument',
+                'parentId' => null,
             ]
         );
         DB::table('categories')->insert(
             [
+                'id' => 2,
                 'name' => 'Guitar',
-                'parentId' => 0,
+                'parentId' => 1,
             ]
         );
         DB::table('categories')->insert(
             [
+                'id' => 3,
                 'name' => 'Piano',
-                'parentId' => 0,
+                'parentId' => 1,
             ]
         );
         DB::table('categories')->insert(
             [
+                'id' => 4,
                 'name' => 'Drum',
-                'parentId' => 0,
+                'parentId' => 1,
             ]
         );
         DB::table('categories')->insert(
             [
+                'id' => 5,
                 'name' => 'Violin',
-                'parentId' => 0,
+                'parentId' => 1,
             ]
         );
         DB::table('categories')->insert(
             [
+                'id' => 6,
                 'name' => 'Accessories',
+                'parentId' => null,
             ]
         );
         DB::table('categories')->insert(
             [
+                'id' => 7,
                 'name' => 'Strings',
-                'parentId' => 5,
+                'parentId' => 6,
             ]
         ); 
     }
