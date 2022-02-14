@@ -17,3 +17,4 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
 Route::post('categories', [CategoryController::class, 'store'])->name('category.store');
+Route::get('categories/{id}', [CategoryController::class, 'show'])->name('category.show');;

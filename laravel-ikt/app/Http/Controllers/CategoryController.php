@@ -34,7 +34,7 @@ class CategoryController extends Controller
     {
         $validated = $request->validated();
         $category = Category::create($validated);
-        return $category;
+        return new CategoryResource($category);
     }
 
     /**
@@ -45,7 +45,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return new CategoryResource($category);
     }
 
     /**
