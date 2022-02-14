@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\Category;
+use App\Models\Category;
 use App\Http\Resources\CategoryResource;
+use App\Http\Requests\StoreCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -16,18 +17,24 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return new CategoryResource($categories);
+        $retval = [];
+        foreach ($categories as $category) {
+            $retval[] = new CategoryResource($category);
+        }
+        return $retval;
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $category = Category::create($validated);
+        return $category;
     }
 
     /**
