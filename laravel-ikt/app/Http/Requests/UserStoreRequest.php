@@ -13,7 +13,7 @@ class UserStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class UserStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "name" => "required|min:1",
+            "email" => "required|email:rfc|unique:users",
+            "password" => "required",
+            "address" => "nullable",
+            "birthdate" => "required|date",
         ];
     }
 }
