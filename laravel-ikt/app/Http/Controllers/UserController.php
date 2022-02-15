@@ -30,9 +30,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $user = User::create($validated);
+        return new UserResource($user);
     }
 
     /**
@@ -43,7 +45,6 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
