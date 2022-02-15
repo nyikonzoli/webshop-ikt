@@ -16,7 +16,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        $retval = [];
+        foreach ($users as $user) {
+            $retval[] = new UserResource($user);
+        }
+        return $retval;
     }
 
     /**
