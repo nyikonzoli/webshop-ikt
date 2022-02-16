@@ -52,13 +52,18 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UserStoreRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserStoreRequest $request, $id)
     {
-        //
+        dd($request);
+        $validated = $request->validated();
+  
+        $user = User::findOrFail($id);
+        $user->update($validated);
+        return new UserResource($user);
     }
 
     /**
@@ -69,6 +74,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        User::destroy($user->getKey());
     }
 }

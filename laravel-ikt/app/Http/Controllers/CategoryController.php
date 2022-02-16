@@ -58,7 +58,9 @@ class CategoryController extends Controller
      */
     public function update(CategoryStoreRequest $request, $id)
     {
+
         $validated = $request->validated();
+        
         $category = Category::findOrFail($id);
         $category->update($validated);
         return new CategoryResource($category);
