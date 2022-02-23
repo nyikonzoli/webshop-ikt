@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ViewControllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/');
 
-Route::get('product/{id}');
+Route::get('product/{id}', [SiteController::class, 'product'])->name('product.view');
 
 Route::get('profile');
 
