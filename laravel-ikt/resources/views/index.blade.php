@@ -8,3 +8,16 @@
     ]) !!}
 {!! Form::close() !!}
 @endsection
+
+@section('innerjs')
+    <script>
+        fetch("{{route("categories.index")}}")
+        .then(response => response.json())
+        .then(data => {
+            const categories = data.data
+
+            let out = ""
+            //TODO: adatok mentese/atadasa
+        })
+    </script>
+@endsection
