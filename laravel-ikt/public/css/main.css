@@ -26,3 +26,11 @@
     background-color: black;
     color: white;
 }
+
+#footer{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 250px;
+    background-color: #121212;
+}
