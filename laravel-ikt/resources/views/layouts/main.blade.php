@@ -11,7 +11,7 @@
     <title>IKT Webshop</title>
 </head>
 <body>
-
+@yield('content')
 
 <!-- Optional JavaScript; choose one of the two! -->
 
