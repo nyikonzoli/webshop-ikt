@@ -11,10 +11,10 @@
 </head>
 <body>
     <div id="navbar">
-        <h2>IKT Webshop</h2>
+        <h1>IKT Webshop</h1>
         <div id="authButtons">
-            <button class="authButton">Login</button>
-            <button class="authButton">Sign Up</button>
+            <button class="authButton"><b>Login</b></button>
+            <button class="authButton"><b>Sign Up</b></button>
         </div>
     </div>
     <div id="content">
