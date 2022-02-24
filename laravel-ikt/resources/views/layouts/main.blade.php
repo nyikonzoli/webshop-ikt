@@ -23,5 +23,6 @@
     <div id="footer">
 
     </div>
+    @yield('innerjs')
 </body>
 </html>

@@ -14,7 +14,7 @@ use App\Http\Controllers\ViewControllers\SiteController;
 |
 */
 
-Route::get('/');
+Route::get('/', [SiteController::class, 'index']);
 
 Route::get('product/{id}', [SiteController::class, 'product'])->name('product.view');
 
