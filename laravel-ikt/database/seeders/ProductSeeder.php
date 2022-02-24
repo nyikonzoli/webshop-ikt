@@ -98,7 +98,7 @@ class ProductSeeder extends Seeder
         ]);
         DB::table('products')->insert([
             'id' => 10,
-            'name' => 'SCHUBERT Sumi88 MK II',
+            'name' => 'SCHUBERT Subi88 MK II',
             'description' => Str::random(50),
             'price' => 186000,
             'amount' => 4,
