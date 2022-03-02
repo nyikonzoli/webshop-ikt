@@ -14,7 +14,7 @@ class ProductController extends Controller
     }
 
     public function show($id) {
-        return Product::findOrFail($id)->get();
+        return Product::findOrFail($id);
     }
 
     public function store(StoreProductRequest $request) {

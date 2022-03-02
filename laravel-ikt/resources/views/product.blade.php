@@ -12,8 +12,8 @@
 
         </div>
         <div id="data">
-            <h1></h1>
             <h3></h3>
+            <h6></h6>
             <p></p>
             <button>Kosárba rakás</button>
         </div>
@@ -22,12 +22,15 @@
 
 @section('innerjs')
     <script>
-        async function productData(id{
-            let response = await fetch("{{route('products.show', ['id' => " + id + "])}}").then(data => data.json());
+        async function productData(){
+            let response = await fetch("{{route('products.show', ['id' => $id])}}").then(data => data.json());
+            console.log(response);
             let content = document.getElementById("data");
-            content.querySelector("h1").innerHTML = response.name;
-            content.querySelector("h3").innerHTML = response.price;
+            content.querySelector("h3").innerHTML = response.name;
+            content.querySelector("h6").innerHTML = response.price;
             content.querySelector("p").innerHTML = response.description;
         }
+
+        productData();
     </script>
 @endsection
