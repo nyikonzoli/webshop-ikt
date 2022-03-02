@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiControllers\CartController;
 use App\Http\Controllers\ApiControllers\CategoryController;
 use App\Http\Controllers\ApiControllers\ProductController;
 use App\Http\Controllers\ApiControllers\UserController;
+use App\Http\Controllers\ApiControllers\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +46,10 @@ Route::post('users', [UserController::class, "store"])->name("users.store");
 Route::get('users/{id}', [UserController::class, "show"])->name("users.show");
 Route::put('users/{id}', [UserController::class, "update"])->name("users.update");
 Route::delete('users/{id}', [UserController::class, "destroy"])->name("users.destory");
+
+//Image routes
+Route::get('images', [ImageController::class, "index"])->name("images.index");
+Route::post('images', [ImageController::class, "store"])->name("images.store");
+Route::get('images/{id}', [ImageController::class, "show"])->name("images.show");
+Route::put('images/{id}', [ImageController::class, "update"])->name("images.update");
+Route::delete('images/{id}', [ImageController::class, "destroy"])->name("images.destory");
