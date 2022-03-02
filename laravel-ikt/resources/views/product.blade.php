@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div id="everyting">
+    <div id="content">
         <div id="image">
 
         </div>
@@ -15,7 +15,19 @@
             <h1></h1>
             <h3></h3>
             <p></p>
-            <button></button>
+            <button>Kosárba rakás</button>
         </div>
     </div>
+@endsection
+
+@section('innerjs')
+    <script>
+        async function productData(id{
+            let response = await fetch("{{route('products.show', ['id' => " + id + "])}}").then(data => data.json());
+            let content = document.getElementById("data");
+            content.querySelector("h1").innerHTML = response.name;
+            content.querySelector("h3").innerHTML = response.price;
+            content.querySelector("p").innerHTML = response.description;
+        }
+    </script>
 @endsection

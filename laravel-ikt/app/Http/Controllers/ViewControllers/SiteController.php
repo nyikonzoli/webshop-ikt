@@ -13,7 +13,6 @@ class SiteController extends Controller
     }
 
     public function product($id){
-        $product = Product::findOrFail($id)->get();
-        return view('product')->with('product', $product);
+        return view('product')->with('id', $id);
     }
 }
