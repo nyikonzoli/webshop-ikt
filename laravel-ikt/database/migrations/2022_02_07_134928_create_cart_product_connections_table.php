@@ -28,6 +28,6 @@ class CreateCartProductConnectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cart_pruduct_connections');
+        Schema::dropIfExists('cart_product_connections');
     }
 }

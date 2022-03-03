@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ApiControllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -31,5 +32,9 @@ class ProductController extends Controller
 
     public function destroy($id) {
         Product::destroy($id);
+    }
+
+    public function images($id){
+        return Image::all()->where("productId", $id);
     }
 }
