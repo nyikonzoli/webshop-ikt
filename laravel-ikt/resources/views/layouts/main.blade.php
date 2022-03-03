@@ -69,23 +69,43 @@
 
     <template id="modalBodyRegister">
         <div>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email">
-            </div>
-            <div class="mb-3">
-                <label for="password1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password1">
-            </div>
-            <div class="mb-3">
-                <label for="password2" class="form-label">Confirm password</label>
-                <input type="password" class="form-control" id="password2">
-            </div>
-            <button class="btn btn-success">Sign up</button>
+            {!! Form::open(['route' => 'register']) !!}
+                <div class="mb-3">
+                    {{ Form::label('name', 'Name', $attributes = ["class" => "form-label"]) }}
+                    {{ Form::text('name', $value = old('name'), $attributes = ["class" => "form-control"]) }}
+                </div>
+                <div class="mb-3">
+                    {{ Form::label('email', 'Email', $attributes = ["class" => "form-label"]) }}
+                    {{ Form::text('email', $value = old('email'), $attributes = ["class" => "form-control"]) }}
+                </div>
+                <div class="mb-3">
+                    {{ Form::label('password', 'Password', $attributes = ["class" => "form-label"]) }}
+                    @error('password')
+                        {{ Form::password('password', $attributes = ["class" => "form-control is-invalid"]) }}
+                        <div id="passwordFeedback" class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @else
+                         {{ Form::password('password', $attributes = ["class" => "form-control"]) }}
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    {{ Form::label('password2', 'Confirm password', $attributes = ["class" => "form-label"]) }}
+                    {{ Form::password('password2', $attributes = ["class" => "form-control"]) }}
+                </div>
+                <div class="mb-3">
+                    {{ Form::label('birthdate', 'Birthdate', $attributes = ["class" => "form-label"]) }}
+                    {{ Form::date('birthdate', $value = old('name'), $attributes = ["class" => "form-control"]) }}
+                </div>
+                <div class="mb-3">
+                    {{ Form::submit('Sign up', $attributes = ["class" => "btn btn-success"]) }}
+                </div>
+            {!! Form::close() !!}
+            @if($errors->any)
+                @foreach($errors->all() as $message)
+                    <li>{{$message}}</li>
+                @endforeach
+            @endif
         </div>
     </template>
 

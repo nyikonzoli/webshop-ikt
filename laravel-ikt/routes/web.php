@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers\SiteController;
+use App\Http\Controllers\ApiControllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ use App\Http\Controllers\ViewControllers\SiteController;
 Route::get('/', [SiteController::class, 'index'])->name('index');
 
 Route::get('product/{id}', [SiteController::class, 'product'])->name('product.view');
+
+Route::post('register', [RegisterController::class, 'store'])->name('register');
 
 Route::get('profile');
 
