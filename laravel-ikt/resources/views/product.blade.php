@@ -3,13 +3,13 @@
 @section('title', 'Product')
 
 @section('header')
-    <script src="{{asset('js/product.js')}}"></script>
+    
 @endsection
 
 @section('content')
     <div id="content">
         <div id="image">
-
+            <img src="">
         </div>
         <div id="data">
             <h3></h3>
@@ -23,6 +23,9 @@
 @section('innerjs')
     <script>
         async function productData(){
+            let images = await fetch("{{route('products.images', ['id' => $id])}}").then(data => data.json());
+            document.getElementById("image").querySelector("img").src = "{{route('index')}}/" + images[0].uri;
+
             let response = await fetch("{{route('products.show', ['id' => $id])}}").then(data => data.json());
             console.log(response);
             let content = document.getElementById("data");
@@ -34,3 +37,4 @@
         productData();
     </script>
 @endsection
+
