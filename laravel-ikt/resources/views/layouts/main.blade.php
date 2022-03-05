@@ -111,15 +111,24 @@
 
     <template id="modalBodyLogin">
         <div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email">
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password">
-            </div>
-            <button class="btn btn-success">Login</button>
+            {!! Form::open(['route' => 'auth']) !!}
+                <div class="mb-3">
+                    {{ Form::label('email', 'Email', $attributes = ["class" => "form-label"]) }}
+                    {{ Form::text('email', $value = old('email'), $attributes = ["class" => "form-control"])}}
+                </div>
+                <div class="mb-3">
+                    {{ Form::label('password', 'Password', $attributes = ["class" => "form-label"]) }}
+                    {{ Form::password('password', $attributes = ["class" => "form-control"]) }}
+                </div>
+                <div class="mb-3">
+                        {{ Form::submit('Login', $attributes = ["class" => "btn btn-success"]) }}
+                </div>
+            {!! Form::close() !!}
+            @if($errors->any)
+                @foreach($errors->all() as $message)
+                    <li>{{$message}}</li>
+                @endforeach
+            @endif
         </div>
     </template>
 </body>

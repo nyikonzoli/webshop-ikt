@@ -5,6 +5,9 @@ use App\Http\Controllers\ApiControllers\CategoryController;
 use App\Http\Controllers\ApiControllers\ProductController;
 use App\Http\Controllers\ApiControllers\UserController;
 use App\Http\Controllers\ApiControllers\ImageController;
+use App\Http\Controllers\ApiControllers\RegisterController;
+use App\Http\Controllers\ApiControllers\AuthController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -54,3 +57,9 @@ Route::post('images', [ImageController::class, "store"])->name("images.store");
 Route::get('images/{id}', [ImageController::class, "show"])->name("images.show");
 Route::put('images/{id}', [ImageController::class, "update"])->name("images.update");
 Route::delete('images/{id}', [ImageController::class, "destroy"])->name("images.destory");
+
+//Registration
+Route::post('register', [RegisterController::class, 'store'])->name('register');
+
+//Authentication
+Route::post('auth', [AuthController::class, 'authentication'])->name('auth');
