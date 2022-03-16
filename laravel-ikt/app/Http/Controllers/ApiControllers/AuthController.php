@@ -9,11 +9,6 @@ use App\Http\Requests\LoginRequest;
 
 class AuthController extends Controller
 {
-    public function login(LoginRequest $request)
-    {
-
-    }
-
     public function authentication(LoginRequest $request)
     {
         $data = $request->validated();
