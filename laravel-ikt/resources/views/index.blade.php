@@ -1,25 +1,46 @@
 @extends('layouts.main')
 
 @section('content')
-{!! Form::open(['method' => 'get']) !!}
-    {!! Form::label('category', 'Kategória', ['class' => 'form-label']) !!}
-    {!! Form::select('category', []) !!}
-{!! Form::close() !!}
+    <div class="row">
+        <div class="col">
+            <div class="input-group">
+                {!! Form::open(['method' => 'get']) !!}
+                {!! Form::label('category', 'Kategória') !!}
+                {!! Form::select('category', []) !!}
+                {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
 @endsection
 
 @section('innerjs')
     <script>
-        fetch("{{route("categories.index", ["parentId" => ""])}}")
+        "use strict"
+
+        fetch("{{route('categories.indexParents', ['parentId' => ''])}}")
         .then(response => response.json())
         .then(data => {
             const categories = data
 
             let out = ""
             for (let cat of categories) {
-                out += `
-                    <optgroup label=${cat.name}>
-                    </optgroup>
-                `
+                out +=
+                    `<optgroup label=${cat.name}>`
+                    fetch("{{route('categories.indexChildren', ['parentId' => 'categories.id'])}}")
+                        .then(response => response.json())
+                        .then(data => {
+                            const subCategories = data
+                            for (let subCat of subCategories) {
+                                out +=
+                                    `<option>${subCat.name}</option>`
+                            }
+                    })
+                    `</optgroup>`
             }
 
             document.querySelector("#category").innerHTML = out

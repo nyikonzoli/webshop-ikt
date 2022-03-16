@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 
 //Category routes
 Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('categories/parents', [CategoryController::class, 'indexParents'])->name('categories.indexParents');
+Route::get('categories/children', [CategoryController::class, 'indexChildren'])->name('categories.indexChildren');
 Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
 Route::get('categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
 Route::put('categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
