@@ -10,17 +10,36 @@ use App\Http\Requests\CategoryStoreRequest;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
+    public function indexAll()
     {
         $categories = Category::all();
         $retval = [];
         foreach ($categories as $category) {
             $retval[] = new CategoryResource($category);
+        }
+        return $retval;
+    }
+
+    public function indexParents()
+    {
+        $categories = Category::all();
+        $retval = [];
+        foreach ($categories as $category) {
+            if (is_null($category->parentId)) {
+                $retval[] = new CategoryResource($category);
+            }
+        }
+        return $retval;
+    }
+
+    public function indexChildren()
+    {
+        $categories = Category::all();
+        $retval = [];
+        foreach ($categories as $category) {
+            if (!is_null($category->parentId)) {
+                $retval[] = new CategoryResource($category);
+            }
         }
         return $retval;
     }
