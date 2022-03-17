@@ -34,8 +34,7 @@
                     fetch("{{route('categories.indexChildren', ['parentId' => 'categories.id'])}}")
                         .then(response => response.json())
                         .then(data => {
-                            const subCategories = data
-                            for (let subCat of subCategories) {
+                            for (let subCat of data) {
                                 out +=
                                     `<option>${subCat.name}</option>`
                             }
