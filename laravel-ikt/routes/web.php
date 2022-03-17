@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers\SiteController;
+use App\Http\Controllers\ApiControllers\AuthController;
+use App\Http\Controllers\ApiControllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,9 @@ Route::get('product/{id}', [SiteController::class, 'product'])->name('product.vi
 Route::get('profile');
 
 Route::get('cart');
+
+//Registration
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
+
+//Authentication
+Route::post('/auth', [AuthController::class, 'authentication'])->name('auth');

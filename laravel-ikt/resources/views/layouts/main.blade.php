@@ -17,7 +17,20 @@
             <button class="authButton" onclick="signUpModal();"><b>Sign Up</b></button>
         </div>
     </div>
+    <?php dump(session()->all()) ?>
+    @if(Session::has('success'))
+        <div class="alert alert-success my-2">{{ Session::get('success') }}xx</div>
+    @endif
+    @if(session('danger'))
+        <div class="alert alert-danger my-2">{{ session('danger') }}</div>
+    @endif
     <div id="content">
+    <!-- @if($errors->any)
+                @foreach($errors->all() as $message)
+                    <li>{{$message}}</li>
+                @endforeach
+            @endif -->
+
         @yield('content')
     </div>
     <div id="footer">
@@ -67,7 +80,7 @@
         </div>
     </div>
 
-    <template id="modalBodyRegister">
+    {{-- <template id="modalBodyRegister">
         <div>
             {!! Form::open(['route' => 'register']) !!}
                 <div class="mb-3">
@@ -107,11 +120,13 @@
                 @endforeach
             @endif
         </div>
-    </template>
+    </template> 
+    --}}
 
     <template id="modalBodyLogin">
         <div>
-            {!! Form::open(['route' => 'auth']) !!}
+            <form action="{{route('auth')}}" method="post">
+                @csrf
                 <div class="mb-3">
                     {{ Form::label('email', 'Email', $attributes = ["class" => "form-label"]) }}
                     {{ Form::text('email', $value = old('email'), $attributes = ["class" => "form-control"])}}
@@ -121,9 +136,9 @@
                     {{ Form::password('password', $attributes = ["class" => "form-control"]) }}
                 </div>
                 <div class="mb-3">
-                        {{ Form::submit('Login', $attributes = ["class" => "btn btn-success"]) }}
+                        {{ Form::submit('Login', ["class" => "btn btn-success", 'name' => 'gomb', 'value' => 'gomb']) }}
                 </div>
-            {!! Form::close() !!}
+            </form>
             @if($errors->any)
                 @foreach($errors->all() as $message)
                     <li>{{$message}}</li>

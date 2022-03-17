@@ -57,9 +57,3 @@ Route::post('images', [ImageController::class, "store"])->name("images.store");
 Route::get('images/{id}', [ImageController::class, "show"])->name("images.show");
 Route::put('images/{id}', [ImageController::class, "update"])->name("images.update");
 Route::delete('images/{id}', [ImageController::class, "destroy"])->name("images.destory");
-
-//Registration
-Route::post('register', [RegisterController::class, 'store'])->name('register');
-
-//Authentication
-Route::post('auth', [AuthController::class, 'authentication'])->name('auth');
