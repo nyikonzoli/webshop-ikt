@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('address')->nullable();
             $table->date('birthdate');
+            $table->string('role');
         });
     }
 

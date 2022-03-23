@@ -25,6 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('view-cart', function(User $user){
+            return ($user->role == "user") ? Response::allow() : Response::deny();
+        })
     }
 }
