@@ -13,7 +13,7 @@
     display: inline;
 }
 
-.authButton{
+.navButton{
     background-color: white;
     border: 3px solid black;
     border-radius: 5px;
@@ -22,7 +22,7 @@
     margin-left: 32px;
 }
 
-.authButton:hover{
+.navButton:hover{
     background-color: black;
     color: white;
 }

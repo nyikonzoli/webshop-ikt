@@ -12,14 +12,23 @@
 <body>
     <div id="navbar">
         <h1>IKT Webshop</h1>
-        <div id="authButtons">
-            <button class="authButton" onclick="loginModal();"><b>Login</b></button>
-            <button class="authButton" onclick="signUpModal();"><b>Sign Up</b></button>
-        </div>
+        @auth
+            <div style="display: inline;">
+                <span style="margin-right: 1rem">You are logged in as <b>{{ \Illuminate\Support\Facades\Auth::user()->name }}</b></span>
+                <button class="navButton" onclick=""><b>Profile</b></button>
+                <button class="navButton" onclick=""><b>Cart</b></button>
+            </div>
+            
+        @else
+            <div style="disply: inline;">
+                <button class="navButton" onclick="loginModal();"><b>Login</b></button>
+                <button class="navButton" onclick="signUpModal();"><b>Sign Up</b></button>
+            </div>
+        @endauth
+
     </div>
-    <?php dump(session()->all()) ?>
     @if(Session::has('success'))
-        <div class="alert alert-success my-2">{{ Session::get('success') }}xx</div>
+        <div class="alert alert-success my-2">{{ Session::get('success') }}</div>
     @endif
     @if(session('danger'))
         <div class="alert alert-danger my-2">{{ session('danger') }}</div>
